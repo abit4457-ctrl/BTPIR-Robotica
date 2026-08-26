@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrera de Robótica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #f43f5e;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8)), 
+                        url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 100px 0 80px;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            bottom: -8px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .card-custom {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px -10px rgba(0, 242, 254, 0.3);
+        }
+
+        .teacher-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .badge-year {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            color: #000;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .badge-coordinator {
+            background: linear-gradient(45deg, #f43f5e, #fb7185);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .accordion-item {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 10px;
+            border-radius: 8px !important;
+            overflow: hidden;
+        }
+
+        .accordion-button {
+            background-color: var(--card-bg);
+            color: #fff;
+            font-weight: 600;
+            box-shadow: none !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(0, 242, 254, 0.1);
+            color: var(--primary);
+        }
+
+        .accordion-button::after {
+            filter: invert(1);
+        }
+
+        .accordion-body {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glow-icon {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+
+        .avatar-placeholder {
+            width: 100%;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px 12px 0 0;
+            color: var(--primary);
+        }
+
+        footer {
+            background-color: #0b0f19;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Header -->
+    <header class="hero-section text-center">
+        <div class="container" data-aos="zoom-in">
+            <h1 class="display-3 fw-bold text-uppercase tracking-wider">
+                <i class="fa-solid fa-robot glow-icon me-3"></i>Carrera de Robótica
+            </h1>
+            <p class="lead text-light opacity-75 max-w-2xl mx-auto">
+                Innovación, mecatrónica, programación y el futuro de la automatización en un solo plan académico.
+            </p>
+        </div>
+    </header>
+
+    <!-- Plan de Estudios -->
+    <section class="py-5 container">
+        <h2 class="section-title" data-aos="fade-right">
+            <i class="fa-solid fa-graduation-cap me-2 text-info"></i>Plan de Estudios
+        </h2>
+
+        <div class="row g-4">
+            <!-- Primer Año -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-custom p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3 class="h4 mb-0">Primer Año</h3>
+                        <span class="badge badge-year rounded-pill">14 Materias</span>
+                    </div>
+                    <div class="accordion" id="accPrimerAno">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p1">1. Matemáticas I</button></h2>
+                            <div id="p1" class="accordion-body" data-bs-parent="#accPrimerAno">Álgebra superior, trigonometría y cálculo diferencial básico.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p2">2. Física I</button></h2>
+                            <div id="p2" class="accordion-body" data-bs-parent="#accPrimerAno">Mecánica clásica, movimiento, vectores y leyes de Newton.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p3">3. Introducción a la Robótica</button></h2>
+                            <div id="p3" class="accordion-body" data-bs-parent="#accPrimerAno">Historia, evolución y componentes estructurales de un robot.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p4">4. Lógica de Programación</button></h2>
+                            <div id="p4" class="accordion-body" data-bs-parent="#accPrimerAno">Algoritmos, diagramas de flujo y resolución de problemas.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p5">5. Electricidad Básica</button></h2>
+                            <div id="p5" class="accordion-body" data-bs-parent="#accPrimerAno">Voltaje, corriente, resistencia y Ley de Ohm en circuitos DC.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p6">6. Dibujo Técnico e Industrial</button></h2>
+                            <div id="p6" class="accordion-body" data-bs-parent="#accPrimerAno">Interpretación de planos y esquemas mecánicos manuales.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p7">7. Programación I (C/C++)</button></h2>
+                            <div id="p7" class="accordion-body" data-bs-parent="#accPrimerAno">Sintaxis fundamental, variables, bucles y funciones estructuradas.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p8">8. Electrónica Analógica</button></h2>
+                            <div id="p8" class="accordion-body" data-bs-parent="#accPrimerAno">Diodos, transistores, amplificadores operacionales y fuentes de poder.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p9">9. Álgebra Lineal</button></h2>
+                            <div id="p9" class="accordion-body" data-bs-parent="#accPrimerAno">Matrices, vectores y transformaciones para cinemática.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p10">10. Química General</button></h2>
+                            <div id="p10" class="accordion-body" data-bs-parent="#accPrimerAno">Propiedades de los materiales, baterías y semi-conductores.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p11">11. Herramientas de Taller</button></h2>
+                            <div id="p11" class="accordion-body" data-bs-parent="#accPrimerAno">Uso seguro de instrumentos de medición, soldadura y ensamblado.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p12">12. Inglés Técnico I</button></h2>
+                            <div id="p12" class="accordion-body" data-bs-parent="#accPrimerAno">Vocabulario especializado en tecnología y manuales de componentes.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p13">13. Metodología de la Investigación</button></h2>
+                            <div id="p13" class="accordion-body" data-bs-parent="#accPrimerAno">Técnicas para documentación y desarrollo de proyectos técnicos.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#p14">14. Ética y Sociedad</button></h2>
+                            <div id="p14" class="accordion-body" data-bs-parent="#accPrimerAno">Impacto de la automatización e inteligencia artificial en el empleo y la sociedad.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Segundo Año -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-custom p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3 class="h4 mb-0">Segundo Año</h3>
+                        <span class="badge badge-year rounded-pill">14 Materias</span>
+                    </div>
+                    <div class="accordion" id="accSegundoAno">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s1">1. Electrónica Digital</button></h2>
+                            <div id="s1" class="accordion-body" data-bs-parent="#accSegundoAno">Puertas lógicas, sistemas numéricos, álgebra de Boole y multiplexores.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s2">2. Microcontroladores (Arduino/PIC)</button></h2>
+                            <div id="s2" class="accordion-body" data-bs-parent="#accSegundoAno">Arquitectura de microchips, programación de puertos de entrada y salida.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s3">3. Mecánica de Materiales</button></h2>
+                            <div id="s3" class="accordion-body" data-bs-parent="#accSegundoAno">Esfuerzo, deformación y selección de estructuras de bajo peso.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s4">4. Sensores y Actuadores</button></h2>
+                            <div id="s4" class="accordion-body" data-bs-parent="#accSegundoAno">Ultrasonido, infrarrojos, servomotores, motores paso a paso y encoders.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s5">5. Diseño CAD 3D (SolidWorks)</button></h2>
+                            <div id="s5" class="accordion-body" data-bs-parent="#accSegundoAno">Modelado tridimensional, ensambles digitales e impresión 3D.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s6">6. Programación II (Python)</button></h2>
+                            <div id="s6" class="accordion-body" data-bs-parent="#accSegundoAno">Estructura de datos avanzadas, scripts orientados a control informático.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s7">7. Cinemática de Robots</button></h2>
+                            <div id="s7" class="accordion-body" data-bs-parent="#accSegundoAno">Cálculo de posiciones y matrices de transformación directa e inversa.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s8">8. Sistemas Neumáticos e Hidráulicos</button></h2>
+                            <div id="s8" class="accordion-body" data-bs-parent="#accSegundoAno">Circuitos con presión de aire y aceite para movimiento de gran potencia.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s9">9. Instrumentación Electrónica</button></h2>
+                            <div id="s9" class="accordion-body" data-bs-parent="#accSegundoAno">Osciloscopios, acondicionamiento de señales y filtrado de ruido.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s10">10. Control Clásico</button></h2>
+                            <div id="s10" class="accordion-body" data-bs-parent="#accSegundoAno">Sistemas de lazo abierto y cerrado, controladores PID fundamentales.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s11">11. Diseño de Circuitos Impresos (PCB)</button></h2>
+                            <div id="s11" class="accordion-body" data-bs-parent="#accSegundoAno">Creación de esquemáticos y ruteo de placas electrónicas en software especializado.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s12">12. Física II (Electromagnetismo)</button></h2>
+                            <div id="s12" class="accordion-body" data-bs-parent="#accSegundoAno">Campos magnéticos, inductancia y principios de motores eléctricos.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s13">13. Inglés Técnico II</button></h2>
+                            <div id="s13" class="accordion-body" data-bs-parent="#accSegundoAno">Redacción de informes técnicos y presentaciones operativas en inglés.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s14">14. Gestión de Proyectos de Ingeniería</button></h2>
+                            <div id="s14" class="accordion-body" data-bs-parent="#accSegundoAno">Metodologías ágiles, presupuesto de hardware y planificación de cronogramas.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tercer Año -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-custom p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3 class="h4 mb-0">Tercer Año</h3>
+                        <span class="badge badge-year rounded-pill">9 Materias</span>
+                    </div>
+                    <div class="accordion" id="accTercerAno">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t1">1. Visión por Computadora</button></h2>
+                            <div id="t1" class="accordion-body" data-bs-parent="#accTercerAno">Procesamiento de imágenes, OpenCV, detección de objetos y patrones.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t2">2. Robótica Móvil y Autónoma</button></h2>
+                            <div id="t2" class="accordion-body" data-bs-parent="#accTercerAno">Navegación, mapeo en tiempo real (SLAM) y evitación de obstáculos.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t3">3. Automatización Industrial y PLCs</button></h2>
+                            <div id="t3" class="accordion-body" data-bs-parent="#accTercerAno">Programación Ladder, autómatas programables y líneas de producción.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t4">4. Inteligencia Artificial Aplicada</button></h2>
+                            <div id="t4" class="accordion-body" data-bs-parent="#accTercerAno">Redes neuronales, aprendizaje automático y toma de decisiones en robots.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t5">5. Sistemas Integrados ROS (Robot Operating System)</button></h2>
+                            <div id="t5" class="accordion-body" data-bs-parent="#accTercerAno">Frameworks avanzados para simulación y control distribuido de robots.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t6">6. Internet de las Cosas (IoT) e Industria 4.0</button></h2>
+                            <div id="t6" class="accordion-body" data-bs-parent="#accTercerAno">Protocolos de comunicación en la nube, MQTT y monitoreo remoto.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t7">7. Dinámica y Control Avanzado</button></h2>
+                            <div id="t7" class="accordion-body" data-bs-parent="#accTercerAno">Análisis de fuerzas, momentos de inercia y estabilidad de manipulación.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t8">8. Proyecto Integrador de Robótica</button></h2>
+                            <div id="t8" class="accordion-body" data-bs-parent="#accTercerAno">Desarrollo completo de un prototipo robótico funcional desde cero.</div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t9">9. Práctica Profesional Supervisada</button></h2>
+                            <div id="t9" class="accordion-body" data-bs-parent="#accTercerAno">Integración directa en la industria para la solución de problemas reales.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo Docente -->
+    <section class="py-5 bg-opacity-10 bg-black">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-right">
+                <i class="fa-solid fa-chalkboard-user me-2 text-info"></i>Cuerpo Docente
+            </h2>
+
+            <!-- Coordinador del área -->
+            <div class="row justify-content-center mb-4" data-aos="zoom-in">
+                <div class="col-md-5">
+                    <div class="card-custom text-center p-4 border-info">
+                        <div class="avatar-placeholder mb-3">
+                            <i class="fa-solid fa-user-gear fa-4x"></i>
+                        </div>
+                        <span class="badge badge-coordinator rounded-pill mb-2">Coordinador del Área</span>
+                        <h3 class="h4 mb-1 text-white">Lic. Saul Jeovani</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Docentes con imagen -->
+            <div class="row g-4 mt-2">
+                <!-- Selvi -->
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="card-custom text-center overflow-hidden">
+                        <img src="imagen 7.jpeg" alt="Lic. Selvi" class="teacher-img">
+                        <div class="p-4">
+                            <h3 class="h5 mb-1 text-white">Lic. Selvi</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rosa Ayslin Calix -->
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="card-custom text-center overflow-hidden">
+                        <img src="imagen 6.jpeg" alt="Lic. Rosa Ayslin Calix" class="teacher-img">
+                        <div class="p-4">
+                            <h3 class="h5 mb-1 text-white">Lic. Rosa Ayslin Calix</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eleuterio Moran -->
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
+                    <div class="card-custom text-center overflow-hidden">
+                        <img src="imagen 5.jpeg" alt="Lic. Eleuterio Moran" class="teacher-img">
+                        <div class="p-4">
+                            <h3 class="h5 mb-1 text-white">Lic. Eleuterio Moran</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demás Docentes -->
+            <div class="row g-4 mt-1">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-custom text-center p-4">
+                        <div class="avatar-placeholder mb-3">
+                            <i class="fa-solid fa-user-tie fa-3x"></i>
+                        </div>
+                        <h3 class="h5 mb-1 text-white">Lic. Sandra Karima Guzman</h3>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-custom text-center p-4">
+                        <div class="avatar-placeholder mb-3">
+                            <i class="fa-solid fa-user-tie fa-3x"></i>
+                        </div>
+                        <h3 class="h5 mb-1 text-white">Lic. Ever Argueta</h3>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-custom text-center p-4">
+                        <div class="avatar-placeholder mb-3">
+                            <i class="fa-solid fa-user-tie fa-3x"></i>
+                        </div>
+                        <h3 class="h5 mb-1 text-white">Lic. Celis Donaldo Bonilla</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center text-muted small">
+        <div class="container">
+            <p class="mb-0">&copy; Carrera de Robótica - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
